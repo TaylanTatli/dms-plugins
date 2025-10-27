@@ -1,0 +1,15 @@
+{
+  "id": "screenshot",
+  "name": "Screenshot",
+  "version": "1.0.0",
+  "description": "Quick screenshot menu for grimblast with multiple capture modes",
+  "author": "Taylan TATLI",
+  "component": "./Screenshot.qml",
+  "settings": "./ScreenshotSettings.qml",
+  "type": "widget",
+  "capabilities": ["screenshot"],
+  "icon": "screenshot_region",
+  "requires": ["grimblast"],
+  "requires_dms": ">=0.1.18",
+  "permissions": ["process", "settings_read", "settings_write"]
+}
