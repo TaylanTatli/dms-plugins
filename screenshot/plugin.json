@@ -7,7 +7,7 @@
   "component": "./Screenshot.qml",
   "settings": "./ScreenshotSettings.qml",
   "type": "widget",
-  "capabilities": ["screenshot"],
+  "capabilities": ["screenshot", "dankbar-widget"],
   "icon": "screenshot_region",
   "requires": ["grimblast"],
   "requires_dms": ">=0.1.18",
