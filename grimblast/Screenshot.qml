@@ -135,19 +135,19 @@ PluginComponent {
     }
 
     const fullCommand = [command].concat(args);
-    console.log("Screenshot: Executing command:", fullCommand.join(" "));
+    console.log("Grimblast: Executing command:", fullCommand.join(" "));
 
-    Proc.runCommand("screenshot.execute", fullCommand, (output, exitCode) => {
+    Proc.runCommand("grimblast.execute", fullCommand, (output, exitCode) => {
       if (exitCode !== 0) {
-        console.error("Screenshot: Command failed with code:", exitCode);
+        console.error("Grimblast: Command failed with code:", exitCode);
         if (output) {
-          console.error("Screenshot: Error output:", output);
+          console.error("Grimblast: Error output:", output);
         }
         if (ToastService) {
           ToastService.showError("Screenshot failed (code: " + exitCode + ")");
         }
       } else {
-        console.log("Screenshot: Command succeeded");
+        console.log("Grimblast: Command succeeded");
         if (ToastService) {
           ToastService.showInfo("Screenshot taken successfully");
         }
@@ -178,7 +178,7 @@ PluginComponent {
     PopoutComponent {
       id: popoutRoot
 
-      headerText: "Screenshot"
+      headerText: "Grimblast"
       detailsText: "Select screenshot action and target"
       showCloseButton: true
 

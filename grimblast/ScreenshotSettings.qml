@@ -4,11 +4,11 @@ import qs.Widgets
 import qs.Modules.Plugins
 
 PluginSettings {
-  pluginId: "screenshot"
+  pluginId: "grimblast"
 
   StyledText {
     width: parent.width
-    text: "Screenshot Settings"
+    text: "Grimblast Settings"
     font.pixelSize: Theme.fontSizeLarge
     font.weight: Font.Bold
     color: Theme.surfaceText

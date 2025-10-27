@@ -1,8 +1,8 @@
 # DMS Plugins
 
-## Screenshot
+## Grimblast
 
 Quick screenshot menu for DankMaterialShell using grimblast.
 
-![Screenshot preview](screenshot/screenshot.png)
+![Grimblast preview](grimblast/screenshot.png)
 
