@@ -2,6 +2,8 @@
 
 Quick screenshot menu for DankMaterialShell using grimblast (Hyprland).
 
+![Grimblast preview](screenshot.png)
+
 ## Features
 
 - 🖼️ **Multiple Capture Modes**: Area, Active Window, Current Output, All Screens
