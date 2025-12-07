@@ -1,3 +1,4 @@
+import QtCore
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
@@ -11,7 +12,7 @@ PluginComponent {
   id: pluginRoot
 
   // Automatically loaded from settings
-  property string saveLocation: pluginData.saveLocation || "~/Pictures/Screenshots"
+  property string saveLocation: resolvePath(pluginData.saveLocation || "~/Pictures/Screenshots")
 
   // State for dynamic height calculation
   property int openSubmenuIndex: -1
@@ -53,23 +54,23 @@ PluginComponent {
       submenu: [
         {
           label: "Area",
-          command: "grimblast",
-          args: ["save", "area"]
+          command: "env",
+          args: [ "DEFAULT_TARGET_DIR=" + saveLocation, "grimblast", "save", "area"]
         },
         {
           label: "Active Window",
-          command: "grimblast",
-          args: ["save", "active"]
+          command: "env",
+          args: [ "DEFAULT_TARGET_DIR=" + saveLocation, "grimblast", "save", "active"]
         },
         {
           label: "Current Output",
-          command: "grimblast",
-          args: ["save", "output"]
+          command: "env",
+          args: [ "DEFAULT_TARGET_DIR=" + saveLocation, "grimblast", "save", "output"]
         },
         {
           label: "All Screens",
-          command: "grimblast",
-          args: ["save", "screen"]
+          command: "env",
+          args: [ "DEFAULT_TARGET_DIR=" + saveLocation, "grimblast", "save", "screen"]
         }
       ]
     },
@@ -80,23 +81,23 @@ PluginComponent {
       submenu: [
         {
           label: "Area",
-          command: "grimblast",
-          args: ["copysave", "area"]
+          command: "env",
+          args: [ "DEFAULT_TARGET_DIR=" + saveLocation, "grimblast", "copysave", "area"]
         },
         {
           label: "Active Window",
-          command: "grimblast",
-          args: ["copysave", "active"]
+          command: "env",
+          args: [ "DEFAULT_TARGET_DIR=" + saveLocation, "grimblast", "copysave", "active"]
         },
         {
           label: "Current Output",
-          command: "grimblast",
-          args: ["copysave", "output"]
+          command: "env",
+          args: [ "DEFAULT_TARGET_DIR=" + saveLocation, "grimblast", "copysave", "output"]
         },
         {
           label: "All Screens",
-          command: "grimblast",
-          args: ["copysave", "screen"]
+          command: "env",
+          args: [ "DEFAULT_TARGET_DIR=" + saveLocation, "grimblast", "copysave", "screen"]
         }
       ]
     },
@@ -128,6 +129,16 @@ PluginComponent {
       ]
     }
   ]
+
+  function resolvePath(path) {
+    const homeDir = StandardPaths.writableLocation(StandardPaths.HomeLocation);
+
+    let expandedPath = path.replace("~", homeDir).replace("$HOME", homeDir);
+
+    let ret = Qt.resolvedUrl(expandedPath).toString().replace("file://", "");
+
+    return ret;
+  }
 
   function executeCommand(command, args) {
     if (ToastService) {
